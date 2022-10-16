@@ -3,7 +3,7 @@
 #include "hardware/adc.h"
 
 float get_CPU_temp(void){
-    adc_init();
+    //adc_init();  
     adc_set_temp_sensor_enabled(true);
     adc_select_input(4);
     uint16_t raw = adc_read();

@@ -1,13 +1,15 @@
 #include <stdio.h>
 #include "pico/stdlib.h"
+#include "hardware/adc.h"
 #include "numbers.h"
 #include "utils.h"
 
 int main(void){
 
-    //Todo: split everything into different files, print cpu temp/cpu clock speed, implement an system that allows easy overclocking to check the results, add a progressbar or %
+    //Todo: print cpu temp/cpu clock speed, implement an system that allows easy overclocking to check the results, add a progressbar or %
 
     stdio_init_all();
+    adc_init();
     
     uint16_t temp, totaltime;
 
