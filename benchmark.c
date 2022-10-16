@@ -12,10 +12,11 @@ int main(void){
     adc_init();
     
     uint16_t temp, totaltime;
+    float cpu_temp;
 
     sleep_ms(5000); //Waiting so user can connect pico to Putty
-    //float cpu = get_CPU_temp();
-    //printf("CPU Temp: %d\n", cpu);
+    cpu_temp = get_CPU_temp();
+    printf("CPU Temp: %.2f\n", cpu_temp); //%.2f = only 2 digits after the point so output is xx.xx and not xx.xxxxx...
     printf("Starting benchmark now...\n\n");
 
     //Check the milliseconds since boot
@@ -38,6 +39,10 @@ int main(void){
     //Check the milliseconds since boot for a second time
     absolute_time_t t2 = get_absolute_time();
     uint32_t time2 = to_ms_since_boot(t2);
+
+    //Printing cpu temp one more time so we can see if it increased a lot (it actually does)
+    cpu_temp = get_CPU_temp();
+    printf("CPU Temp after benchmark: %.2f\n", cpu_temp);
 
     //Calculating how long it takes to sort the array
     totaltime = time2 - time1;
