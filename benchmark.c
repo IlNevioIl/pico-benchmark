@@ -59,6 +59,7 @@ int main(void){
     printf("Benchmark score: %d (ms)\n\n", totaltime);
     sleep_ms(100); //Sometimes the next 2 lines are not printed, this should fix it
     printf("The lower the score, the better the pico\n");
+    sleep_ms(100); //And this should fix it here too
     printf("Please star the github repo if this was useful :)\n");
 
     //Printing the hole array
