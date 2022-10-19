@@ -57,6 +57,7 @@ int main(void){
     //Calculating how long it takes to sort the array
     totaltime = time2 - time1;
     printf("Benchmark score: %d (ms)\n\n", totaltime);
+    sleep_ms(100); //Sometimes the next 2 lines are not printed, this should fix it
     printf("The lower the score, the better the pico\n");
     printf("Please star the github repo if this was useful :)\n");
 

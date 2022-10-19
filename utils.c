@@ -16,17 +16,18 @@ float get_CPU_temp(void){
 } 
 
 void progressbar_check(int currentLoop) {
-    //Todo: Make this not hard coded and actually a progressbar
-    switch(currentLoop) {
-	    case 1000: printf("10%% done\n"); break;
-        case 2000: printf("20%% done\n"); break;
-        case 3000: printf("30%% done\n"); break;
-        case 4000: printf("40%% done\n"); break;
-        case 5000: printf("50%% done\n"); break;
-        case 6000: printf("60%% done\n"); break;
-        case 7000: printf("70%% done\n"); break;
-        case 8000: printf("80%% done\n"); break;
-        case 9000: printf("90%% done\n"); break;
+    int percentage = currentLoop / 100; // :100 because we have 10.000 loops in total
+    switch(percentage) {
+	    case 10: printf("\rStatus: #--------- | 10%%"); fflush(stdout); break;
+        case 20: printf("\rStatus: ##-------- | 20%%"); fflush(stdout); break;
+        case 30: printf("\rStatus: ###------- | 30%%"); fflush(stdout); break;
+        case 40: printf("\rStatus: ####------ | 40%%"); fflush(stdout); break;
+        case 50: printf("\rStatus: #####----- | 50%%"); fflush(stdout); break;
+        case 60: printf("\rStatus: ######---- | 60%%"); fflush(stdout); break;
+        case 70: printf("\rStatus: #######--- | 70%%"); fflush(stdout); break;
+        case 80: printf("\rStatus: ########-- | 80%%"); fflush(stdout); break;
+        case 90: printf("\rStatus: #########- | 90%%"); fflush(stdout); break;
+        case 100: printf("\rStatus: ########## | Done\n\n"); break;
 	default: break;
 }
 }
