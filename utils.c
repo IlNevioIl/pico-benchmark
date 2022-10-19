@@ -14,3 +14,19 @@ float get_CPU_temp(void){
     float cpuTemp = temp; //Have to do this because it will return the voltage otherwise (idk why)
     return cpuTemp;
 } 
+
+void progressbar_check(int currentLoop) {
+    //Todo: Make this not hard coded and actually a progressbar
+    switch(currentLoop) {
+	    case 1000: printf("10%% done\n"); break;
+        case 2000: printf("20%% done\n"); break;
+        case 3000: printf("30%% done\n"); break;
+        case 4000: printf("40%% done\n"); break;
+        case 5000: printf("50%% done\n"); break;
+        case 6000: printf("60%% done\n"); break;
+        case 7000: printf("70%% done\n"); break;
+        case 8000: printf("80%% done\n"); break;
+        case 9000: printf("90%% done\n"); break;
+	default: break;
+}
+}

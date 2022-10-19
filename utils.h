@@ -3,4 +3,6 @@
 
 float get_CPU_temp(void);
 
+void progressbar_check(int currentLoop);
+
 #endif

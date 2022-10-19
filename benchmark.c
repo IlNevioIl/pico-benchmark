@@ -6,7 +6,7 @@
 
 int main(void){
 
-    //Todo: print cpu temp/cpu clock speed, implement an system that allows easy overclocking to check the results, add a progressbar or %
+    //Todo: print cpu clock speed, implement an system that allows easy overclocking to check the results, add a progressbar or %
 
     stdio_init_all();
     adc_init();
@@ -23,6 +23,10 @@ int main(void){
     absolute_time_t t1 = get_absolute_time();
     uint32_t time1 = to_ms_since_boot(t1);
 
+    /*
+     *  The magic starts here
+     */
+
     for (int i = 0; i <= 10000; i++) //Loop 10.000 times
     {
         for (int j = 0; j <= 9998; j++) //Looping though the 10000 size array (9998 because we check the next existing number (array[j+1]) and this doesnt exist if we are checking the last number at array[9999]) array[10000] does not exist since we start counting at 0
@@ -35,7 +39,13 @@ int main(void){
                 numbers[j+1] = temp;
             }
         }
+        progressbar_check(i);
     }
+
+    /*
+     *  The magic ends here
+     */
+
     //Check the milliseconds since boot for a second time
     absolute_time_t t2 = get_absolute_time();
     uint32_t time2 = to_ms_since_boot(t2);
