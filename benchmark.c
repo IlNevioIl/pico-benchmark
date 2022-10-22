@@ -4,21 +4,32 @@
 #include "numbers.h"
 #include "utils.h"
 
+#define _INFO_ "[+]"
+#define _PROCESS_ "[*]"
+
 int main(void){
 
-    //Todo: print some register adresses, add a prefix, make the led blink 5 times before the benchmark starts, 
+    //Todo: make the led blink 5 times before the benchmark starts, print how much the cpu actually got hotter
     //  print cpu clock speed, implement an system that allows easy overclocking to check the results
 
     stdio_init_all();
-    adc_init();
+    adc_init(); //Required for cpu temp
     
     uint16_t temp, totaltime;
     float cpu_temp;
 
     sleep_ms(5000); //Waiting so user can connect pico to Putty
+
+    /*Data Info before the benchmark starts*/
     cpu_temp = get_CPU_temp();
-    printf("CPU Temp: %.2f\n", cpu_temp); //%.2f = only 2 digits after the point so output is xx.xx and not xx.xxxxx...
-    printf("Starting benchmark now...\n\n");
+    printf(_INFO_ "CPU Temp: %.2f\n", cpu_temp); //%.2f = only 2 digits after the point so output is xx.xx and not xx.xxxxx...
+
+    uint16_t *pnumbers0 = &numbers[0];
+    uint16_t *pnumbers1 = &numbers[9999];
+    printf(_INFO_"Array ranges from 0x%p to 0x%p\n\n", pnumbers0, pnumbers1);
+    /*Data Info before the benchmark starts (ends here)*/
+
+    printf(_PROCESS_"Starting benchmark now...\n\n");
 
     //Check the milliseconds since boot
     absolute_time_t t1 = get_absolute_time();
@@ -53,11 +64,11 @@ int main(void){
 
     //Printing cpu temp one more time so we can see if it increased a lot (it actually does)
     cpu_temp = get_CPU_temp();
-    printf("CPU Temp after benchmark: %.2f\n", cpu_temp);
+    printf(_INFO_ "CPU Temp after benchmark: %.2f\n", cpu_temp);
 
     //Calculating how long it takes to sort the array
     totaltime = time2 - time1;
-    printf("Benchmark score: %d (ms)\n\n", totaltime);
+    printf(_INFO_ "Benchmark score: %d (ms)\n\n", totaltime);
     sleep_ms(100); //Sometimes the next 2 lines are not printed, this should fix it
     printf("The lower the score, the better the pico\n");
     sleep_ms(100); //And this should fix it here too

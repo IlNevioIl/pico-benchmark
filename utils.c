@@ -29,5 +29,5 @@ void progressbar_check(int currentLoop) {
         case 90: printf("\rStatus: #########- | 90%%"); fflush(stdout); break;
         case 100: printf("\rStatus: ########## | Done\n\n"); break;
 	default: break;
-}
+    }
 }
