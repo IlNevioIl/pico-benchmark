@@ -12,7 +12,6 @@ add_executable(benchmark
 )   
 
 target_link_libraries(benchmark
-    pico_multicore
     pico_stdlib
     hardware_adc
 )

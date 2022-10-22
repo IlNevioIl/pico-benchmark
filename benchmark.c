@@ -6,7 +6,8 @@
 
 int main(void){
 
-    //Todo: print cpu clock speed, implement an system that allows easy overclocking to check the results, add a progressbar or %
+    //Todo: print some register adresses, add a prefix, make the led blink 5 times before the benchmark starts, 
+    //  print cpu clock speed, implement an system that allows easy overclocking to check the results
 
     stdio_init_all();
     adc_init();
